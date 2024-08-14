@@ -21,33 +21,54 @@ const Dropzone = () => {
 const onChooseFile = () => {
   inputRef.current.click();
 }
+//Function to clear the file input
+const clearFileInput = () =>  {
+  inputRef.current.value = "";
+  setSelectedFile(null);
+  setProgress(0);
+  setUploadStatus("select");
+}
   return (
       <div>
          {/* Imput file */}
         <input type="file" ref={inputRef} onChange={handleFileChange} style={{display: "none"}} />
         
-         {/* Analyze the file button */}
+        {/* Analyze the file button */}
+        {!selectedFile && (
+        <>
         <button className='file-btn'  onClick={onChooseFile}>
           <span className="material-symbols-outlined">upload_file</span>
           Load File & Analyze
         </button>
+        </>
+        )}
 
         {/*Displaying the information and progress when a file is selected */}
-        <div className="file-card">
-          <span className="material-symbols-outlined icon">description</span>
-          <div className="file-info">
-            <div style ={{flex: 1}}>
-              <h6>File Name Here</h6>
-              <div className="progress-bg" style={{ width:`40%`}}>
+        {selectedFile && (
+        <>
+          <div className="file-card">
+            <span className="material-symbols-outlined icon">
+              description
+            </span>
+            <div className="file-info">
+              <div style ={{flex: 1}}>
+                <h6>{selectedFile.name}</h6>
+                <div className="progress-bg">
+                  <div className="progress" style={{ width:`40%`}} />
+                </div>
+                <button onClick={clearFileInput}>
+                  <span className="material-symbols-outlined close-icon">
+                    close
+                  </span>
+                </button>
               </div>
             </div>
+            </div>
+        </>
+  
+     )}
+  </div>
+);
+};
 
-            {/* Display clear bıtton or progress checkmark */}
-          </div>
-        
-        </div>
-      </div>
-  );
-
-}
 export default Dropzone;

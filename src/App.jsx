@@ -8,10 +8,10 @@ const App =() => {
         <p>Lütfen log dosyasını yükleyin.</p>
         <div className="flex space-x-4">
        
-        <Sequence />
+        {/* <Sequence /> */}
         
         
-        {/* <Dropzone /> */}
+        <Dropzone />
 
         </div>
       </div>

@@ -6,8 +6,6 @@ const root = createRoot(domNode);
 const Sequence =() => {
 
     const input =
-
-    
     'Note over  BiP Client A: Start Call\n' +
     'Note over  BiP Client A: Capability Check\n' +
     'Note over  BiP Client A: OutgoingCall UI\n' +
