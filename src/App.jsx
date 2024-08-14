@@ -1,18 +1,22 @@
  import Dropzone from './Dropzone';
 import Sequence from './Sequence';
-function App() {
+const App =() => {
   return (
     <section className="section">
-       <div className="container-dropzone">
-        <h1 className="title text-3xl font-bold">Log Analizi</h1>
-        <p>Sadece .log uzantili dosyalar yuklenebilir</p>
-        <Dropzone />
-      </div> 
-      {/* <div className="container-sequence">
+      <div className="container">
+        <h1>Log Analizi</h1>
+        <p>Lütfen log dosyasını yükleyin.</p>
+        <div className="flex space-x-4">
+       
         <Sequence />
-      </div> */}
+        
+        
+        {/* <Dropzone /> */}
+
+        </div>
+      </div>
   </section>
+
    );
 }
-
 export default App;
