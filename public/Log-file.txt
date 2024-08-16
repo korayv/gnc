@@ -1,0 +1,4 @@
+2024-07-31 15:54:43.683 INFO P2PCallManager handleInitiate from : 905332101534@tims.turkcell.com.tr/BipMobileClient , domain : [https://voip02.bip.com/] , roomName : 905332101534_440a463b-f907-4a9b-98f5-bd9699c0f34c_call , callId : 8F30F750-537B-4D71-8992-889F65FDB09C , callType : voice , messageId : gcc_U3QAeDX3-381
+2024-07-31 15:54:43.695 INFO GsmCallStateHandler setGsmCallState::gsmCallActive: false, gsmCallRinging: false
+2024-07-31 15:54:43.704 INFO linphone_StackManager startRinging
+2024-07-31 15:54:43.743 INFO P2PCallEventManager sendInfo to : 905332101534@tims.turkcell.com.tr , roomName : 905332101534_440a463b-f907-4a9b-98f5-bd9699c0f34c_call , state: RINGING
