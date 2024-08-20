@@ -5,7 +5,6 @@ const App = () => {
     <section className="section">
       <div className="container">
         <h1>Log Analizi</h1>
-        <p>Lütfen log dosyasını yükleyin.</p>
         <div className="flex space-x-4">
           <Dropzone />
         </div>
