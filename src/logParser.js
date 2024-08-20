@@ -1,4 +1,5 @@
 import logSet from "./log_set";
+
 export const parseLogAndGenerateSequence = (logContent) => {
   const lines = logContent.split("\n");
   let sequenceDiagramText = "";
@@ -6,17 +7,22 @@ export const parseLogAndGenerateSequence = (logContent) => {
   lines.forEach((line) => {
     logSet.forEach((logEntry) => {
       if (line.includes(logEntry.logline)) {
-        const rgxFrom = /from :\s?(\d+)/
-        const rgxcallId = /callId :\s?(\w+)/
-        // const rgxDynamic = /{from} : \s?(\d+)/;
-        const fromMatch = line.match(rgxFrom); 
-        const callIdMatch = line.match(rgxcallId)
+        const rgxDynamicKey = /(\w+)\s?:\s?([^\s,]+)/g;
+        const rgxPlaceholder = /\{\{(.*?)\}\}/g;
 
-        const fromMatchNullable = fromMatch ? fromMatch[1] : "No Result on From";
-        const callIdMatchNullable = callIdMatch ? callIdMatch[1] : "No Result on callId";
-        const updatedSequenceNote = logEntry.sequenceNote
-        .replace("{{from}}", fromMatchNullable)
-        .replace("{{callId}}", callIdMatchNullable);
+        const extractDataFromLogLine = (line) => {
+          const keyValuePairs = {};
+          let match;
+          while ((match = rgxDynamicKey.exec(line)) !== null) {
+            keyValuePairs[match[1]] = match[2]; 
+          }
+          return keyValuePairs;
+        };
+
+        const logData = extractDataFromLogLine(line); 
+        const updatedSequenceNote = logEntry.sequenceNote.replace(rgxPlaceholder, (match, key) => {
+          return logData[key] ? logData[key] : `No Result for ${key}`;
+        });
 
         sequenceDiagramText += updatedSequenceNote + " \n";
       }
@@ -25,5 +31,3 @@ export const parseLogAndGenerateSequence = (logContent) => {
 
   return sequenceDiagramText;
 };
-
-
