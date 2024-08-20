@@ -6,7 +6,9 @@ export const parseLogAndGenerateSequence = (logContent) => {
 
   lines.forEach((line) => {
     logSet.forEach((logEntry) => {
-      if (line.includes(logEntry.logline)) {
+      const logLineRegex = new RegExp(logEntry.logline[0], "g");
+
+      if (logLineRegex.exec(line) !== null) {
         const rgxDynamicKey = /(\w+)\s?:\s?([^\s,]+)/g;
         const rgxPlaceholder = /\{\{(.*?)\}\}/g;
 
@@ -14,15 +16,18 @@ export const parseLogAndGenerateSequence = (logContent) => {
           const keyValuePairs = {};
           let match;
           while ((match = rgxDynamicKey.exec(line)) !== null) {
-            keyValuePairs[match[1]] = match[2]; 
+            keyValuePairs[match[1]] = match[2];
           }
           return keyValuePairs;
         };
 
-        const logData = extractDataFromLogLine(line); 
-        const updatedSequenceNote = logEntry.sequenceNote.replace(rgxPlaceholder, (match, key) => {
-          return logData[key] ? logData[key] : `No Result for ${key}`;
-        });
+        const logData = extractDataFromLogLine(line);
+        const updatedSequenceNote = logEntry.sequenceNote.replace(
+          rgxPlaceholder,
+          (match, key) => {
+            return logData[key] ? logData[key] : `No Result for ${key}`;
+          }
+        );
 
         sequenceDiagramText += updatedSequenceNote + " \n";
       }
