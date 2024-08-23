@@ -29,8 +29,18 @@ const Dropzone = () => {
       }
       return (
         <>
-          <SequenceDiagram input={sequenceTime} options={options} onError={onError} />
-          <SequenceDiagram input={sequenceText} options={options} onError={onError} />
+          <table style={{width: '100%', borderCollapse:'collapse'}}>
+            <tbody>
+              <tr>
+                <td style={{verticalAlign: 'top', padding: '10px'}}>
+                  <SequenceDiagram input={sequenceText} options={options} onError={onError} />
+                </td>
+                <td style={{verticalAlign: 'top', padding: '11px'}}>
+                  <SequenceDiagram input={sequenceTime} options={options} onError={onError} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </>
       )
     }

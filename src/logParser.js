@@ -27,7 +27,7 @@ export const parseLogAndGenerateSequence = (logContent) => {
             console.log("XXXX: ", logLine)
           }
         sequenceDiagramArray.push({
-          time: "Note over Time: " + dateTime + "\n",
+          time: "Note left of Time: " + dateTime + "\n",
           message: updatedSequenceNote + "\n"
         })
 
