@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+.signal text {
+  fill: #cdf253;
+}
 
 .logo {
   height: 6em;

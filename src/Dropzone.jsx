@@ -3,14 +3,17 @@ import { parseLogAndGenerateSequence } from './logParser';
 import SequenceDiagram from 'react-sequence-diagram';
 const Dropzone = () => {
   const [sequenceText, setSequenceText] = useState('');
+  const [sequenceTime, setSequenceTime] = useState('');
 
   const handleFiles = (files) => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const fileContent = e.target.result;
-      const sequence = parseLogAndGenerateSequence(fileContent); // Parsing and generating sequence diagram string
-
+      const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent); // Parsing and generating sequence diagram string
+      const sequence = sequenceDiagramArray.map(item => item.message).join('');
+      const sequenceTime = sequenceDiagramArray.map(item => item.time).join('');
       setSequenceText(sequence);
+      setSequenceTime(sequenceTime);
     };
     reader.readAsText(files[0]);
   };
@@ -24,7 +27,12 @@ const Dropzone = () => {
       function onError(error) {
         console.log(error);
       }
-      return <SequenceDiagram input={sequenceText} options={options} onError={onError} />
+      return (
+        <>
+          <SequenceDiagram input={sequenceTime} options={options} onError={onError} />
+          <SequenceDiagram input={sequenceText} options={options} onError={onError} />
+        </>
+      )
     }
   };
 
