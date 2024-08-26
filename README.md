@@ -6,14 +6,9 @@
 3. [Technology Stack](#technology-stack)
 4. [System Requirements](#system-requirements)
 5. [Installation Guide](#installation-guide)
-6. [Configuration](#configuration)
-7. [Usage](#usage)
-8. [Visual Representation of Logs](#visual-representation-of-logs)
-9. [Error Handling and Logging](#error-handling-and-logging)
-10. [Testing](#testing)
-11. [Future Enhancements](#future-enhancements)
-12. [FAQs](#faqs)
-13. [Support and Contact](#support-and-contact)
+6. [Usage](#usage)
+7. [Visual Representation of Logs](#visual-representation-of-logs)
+
 
 ---
 
@@ -46,10 +41,12 @@ The Log Visualization App is a platform to upload, visualize, and analyze log fi
 
 ### Clone the Repository
 ```bash
-git clone <https://github.com/korayv/gnc>
-cd log-visualization-app
-
-## 7. Usage
+git clone https://github.com/korayv/gnc
+cd gnc
+npm install
+npm run dev
+```
+## 6. Usage
 
 ### Uploading Log Files
 1. Navigate to the file upload section.
@@ -57,26 +54,11 @@ cd log-visualization-app
 3. Click on "Upload" to start processing.
 
 ### Visualizing Logs
-- Choose the SEQUENCE diagram option for visualization.
-- Apply filters (e.g., time range, event types).
-- Use the search bar to locate specific log entries.
+1. The log file will turn to a sequence diagram rapidly.
+2. Screenshot your sequence diagram by pressing cmd + shift + 4
+3. Change the json and repeat the process.
 
-### Interacting with SEQUENCE Diagrams
-- Hover over events in the SEQUENCE diagram for detailed information.
-- Zoom in/out for finer control.
-- Download the diagram as an image or export the log data in JSON format.
 
-## 8. Visual Representation of Logs
-- **SEQUENCE Diagram**: Depicts the flow of events over time in a sequential manner, showing the interactions between different parts of the system in chronological order.
+## 7. Visual Representation of Logs
+- **Sequence Diagram**: From the log files some lines are not trackable. So that, using a specific json line tracking system we can now handle what is the call flow now on. We can see the errors from the visualized call flow. 
 
-## 9. Error Handling and Logging
-- Error messages are displayed when log files fail to upload or when data cannot be visualized.
-- JavaScript handles all errors within the browser, and error logs are accessible via the browser console.
-- Alerts are shown for invalid log file formats or empty logs.
-
-## 10. Testing
-
-### Unit Tests
-Use `Jest` or another testing framework to test individual components.
-```bash
-npm test
