@@ -24,11 +24,11 @@ export const parseLogAndGenerateSequence = (logContent) => {
           const dateTime = dateTimeRegex.exec(logLine);
           dateTimeRegex.lastIndex = 0;
           if (dateTime == null) {
-            console.log("XXXX: ", logLine)
+            console.log("Timestamp missing in log line: ", logLine);
           }
-        sequenceDiagramArray.push({
-          time: "Note left of Time: " + dateTime + "\n",
-          message: updatedSequenceNote + "\n"
+          sequenceDiagramArray.push({
+            time: dateTime ? dateTime[0] : "Unknown Time",
+            message: updatedSequenceNote + "\n"
         })
 
       }
@@ -52,4 +52,3 @@ const extractDataFromLogLine = (line) => {
 
   return keyValuePairs;
 };
-

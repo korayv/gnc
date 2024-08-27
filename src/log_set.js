@@ -8,10 +8,14 @@ const logSet = [
     logline: "P2PCallEventManager sendInfo",
     sequenceNote: "BiP Client A -> XMPP: event(Conferencejoined)",
   },
-  // {
-  //   logline: "CallSetupTimeHelper Call setup time took:",
-  //   sequenceNote: "Note over BiP Client A: Call Setup  time - {{took}}",
-  // },
+  {
+    logline: "CallSetupTimeHelper Call setup time took:",
+    sequenceNote: "Note over BiP Client A: Call Setup  time - {{took}}",
+  },
+  {
+    logline: "linphone_StackManager startRinging",
+    sequenceNote: "BiP Client A --> Jitsi SDK A: startRinging",
+  },
 ];
 // {
 //   logline: "JitsiActivity",
@@ -22,7 +26,6 @@ const logSet = [
 //   logline: "CallAnalytics",
 //   sequenceNote: "ccc",
 // },
-//<title id="title">Green rectangle</title>
-//<rect width="75" height="50" rx="20" ry="20" fill="#90ee90" stroke="#228b22" stroke-fill="1" />
+
 
 export default logSet;

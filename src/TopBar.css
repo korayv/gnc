@@ -1,0 +1,17 @@
+.topBar{
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  margin: 16px;
+  background-color: gold;
+}
+.textContainer{
+  padding-left: 30px;
+  padding-right: 10px;
+}
+.buttonContainer{
+  padding-left: 30px;
+  border-radius: 30px;
+}
