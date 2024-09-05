@@ -42,8 +42,8 @@ export const parseLogAndGenerateSequence = (logContent) => {
 /**
  * This method is extracting the log Sequence Note --> actor line
  */
-export const parseLogSequenceNote = () => {
-  const actor = 'BiP Client A'//sequenceNote.split(/-->|->/)[0].split('-')[0].trim();
+export const parseLogSequenceNote = (sequenceNote) => {
+  const actor = sequenceNote.split(/-->|->/)[0].split('-')[0].trim();
   return actor;
 }
 
