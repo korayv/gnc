@@ -1,5 +1,5 @@
 import logSet from "./log_set";
-
+import { addTimestampsToSvg } from './Timestamp';
 const dateTimeRegex = /\d{4}[-/]\d{2}[-/]\d{2} \d{2}:\d{2}:\d{2}[:.]\d{3}/g;
 const rgxPlaceholder = /\{\{(.*?)\}\}/g; //regex that takes the placeholder between the {{curly}} braces
 /*

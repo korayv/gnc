@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { parseLogAndGenerateSequence, parseLogSequenceNote } from './logParser';
+import { parseLogAndGenerateSequence } from './logParser';
 import SequenceDiagram from 'react-sequence-diagram';
-import logSet from './log_set';
+import { addTimestampsToSvg } from './Timestamp';
 
 const Dropzone = () => {
   const [sequenceText, setSequenceText] = useState('');
@@ -32,56 +32,25 @@ const Dropzone = () => {
       }
 
       return (
-        <>
-          <div className={{ display: 'flex', alignItems: 'flex-start' }}>
-            {/* Sequence Diagram */}
-            <div className={{ flex: 1, padding: '10px' }}>
-              <SequenceDiagram
-                input={sequenceText}
-                options={options}
-                onError={onError}
-              />
-            </div>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          {/* Sequence Diagram */}
+          <div style={{ flex: 1, padding: '10px' }}>
+            <SequenceDiagram
+              input={sequenceText}
+              options={options}
+              onError={onError}
+            />
           </div>
-        </>
+        </div>
       );
     }
-  };
-
-  // Function to add timestamps near the text elements in the SVG
-  const addTimestampsToSvg = () => {
-    const svgTexts = document.querySelectorAll('svg text'); // Select all text elements inside the SVG
-
-    // Filter the actor elements from timeline printing
-    let eventTextElements = Array.from(svgTexts).filter(textElement => {
-      return !logSet.some(log => {
-        const actors = parseLogSequenceNote(log.sequenceNote); // Get both actors as an array
-        return actors.some(actor => textElement.textContent.includes(actor)); // Exclude if text contains any actor
-      });
-    });
-  
-
-    eventTextElements.forEach((textElement, index) => {
-      const x = textElement.getAttribute('x');
-      const y = textElement.getAttribute('y');
-
-      if (x && y && sequenceTimes[index]) {
-        const svgNamespace = "http://www.w3.org/2000/svg";
-        const timestampText = document.createElementNS(svgNamespace, 'text');
-        timestampText.setAttribute('x', x - 0);
-        timestampText.setAttribute('y', y -7);         timestampText.setAttribute('fill', 'red');  
-        timestampText.setAttribute('font-size', '10'); 
-        timestampText.textContent = sequenceTimes[index]; 
-
-        textElement.parentNode.appendChild(timestampText);   }
-    });
   };
 
   // Use effect to add timestamps after rendering the diagram
   useEffect(() => {
     if (sequenceText && sequenceTimes.length) {
       setTimeout(() => {
-        addTimestampsToSvg();
+        addTimestampsToSvg(sequenceTimes);
       }, 500); // Adding a small delay to ensure SVG rendering is completed
     }
   }, [sequenceText, sequenceTimes]);
@@ -100,7 +69,7 @@ const Dropzone = () => {
       )}
 
       <div className="diagramContainer"></div>
-      
+
       {renderSequenceDiagram()}
     </div>
   );

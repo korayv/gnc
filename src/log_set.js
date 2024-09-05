@@ -1,7 +1,7 @@
 const logSet = [
   {
     logline: "P2PCallManager handleInitiate",
-    sequenceNote: "{{from}} -> BiP Client A: handleInitiate(from: {{from}} callId: {{callId}})"
+    sequenceNote: "XMPP -> BiP Client A: handleInitiate(from: {{from}} callId: {{callId}})"
   },
   {
     logline: "P2PCallEventManager sendInfo",
