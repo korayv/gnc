@@ -55,9 +55,9 @@ const Dropzone = () => {
     // Filter the actor elements from timeline printing
     let eventTextElements = Array.from(svgTexts).filter(textElement => {
       return !logSet.some(log => {
-        const actor = parseLogSequenceNote(log.sequenceNote); // Get both actors as an array
-        return textElement.textContent.includes(actor);      
-       });
+        const actors = parseLogSequenceNote(log.sequenceNote); // Get both actors as an array
+        return actors.some(actor => textElement.textContent.includes(actor)); // Exclude if text contains any actor
+      });
     });
   
 

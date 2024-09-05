@@ -43,9 +43,22 @@ export const parseLogAndGenerateSequence = (logContent) => {
  * This method is extracting the log Sequence Note --> actor line
  */
 export const parseLogSequenceNote = (sequenceNote) => {
-  const actor = sequenceNote.split(/-->|->/)[0].split('-')[0].trim();
-  return actor;
-}
+  if (!sequenceNote) {
+    // Return an empty array if sequenceNote is undefined or null
+    return [];
+  }
+
+  const actors = sequenceNote.split(/-->|->/);
+
+  if (actors.length < 2) {
+    // Return an empty array if splitting does not produce at least two parts
+    return [];
+  }  
+  const actor1 = actors[0].trim(); // Actor before the arrow
+  const actor2 = actors[1].split(':')[0].trim(); // Actor after the arrow, up to the first colon
+
+  return [actor1, actor2]; // Return the array of actors
+};
 
 const extractDataFromLogLine = (line) => {
   const rgxDynamicKey = /(\w+)\s?:\s?([^\s,]+)/g; //regex key for with the dynamic approach after the curly
