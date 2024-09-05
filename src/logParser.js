@@ -39,6 +39,14 @@ export const parseLogAndGenerateSequence = (logContent) => {
   return sequenceDiagramArray;
 };
 
+/**
+ * This method is extracting the log Sequence Note --> actor line
+ */
+export const parseLogSequenceNote = () => {
+  const actor = 'BiP Client A'//sequenceNote.split(/-->|->/)[0].split('-')[0].trim();
+  return actor;
+}
+
 const extractDataFromLogLine = (line) => {
   const rgxDynamicKey = /(\w+)\s?:\s?([^\s,]+)/g; //regex key for with the dynamic approach after the curly
   const keyValuePairs = {}; //Object that stores key value pairs  

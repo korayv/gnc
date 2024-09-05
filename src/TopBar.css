@@ -1,4 +1,4 @@
-.topBar{
+.topBar {
   align-content: center;
   align-items: center;
   width: 100%;
@@ -7,11 +7,13 @@
   margin: 16px;
   background-color: gold;
 }
-.textContainer{
+
+.textContainer {
   padding-left: 30px;
   padding-right: 10px;
 }
-.buttonContainer{
+
+.buttonContainer {
   padding-left: 30px;
   border-radius: 30px;
 }

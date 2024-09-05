@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { parseLogAndGenerateSequence } from './logParser';
+import { parseLogAndGenerateSequence, parseLogSequenceNote } from './logParser';
 import SequenceDiagram from 'react-sequence-diagram';
 import logSet from './log_set';
 
@@ -52,18 +52,14 @@ const Dropzone = () => {
   const addTimestampsToSvg = () => {
     const svgTexts = document.querySelectorAll('svg text'); // Select all text elements inside the SVG
 
-    // Filter only relevant text elements based on the loglines in the logSet and exclude unwanted loglines like "XMPP"
+    // Filter the actor elements from timeline printing
     let eventTextElements = Array.from(svgTexts).filter(textElement => {
-      return logSet.some(() => {
-        return (
-          !textElement.textContent.includes("XMPP") &&
-          !textElement.textContent.includes("BiP Client A") &&
-          !textElement.textContent.includes("Jitsi SDK A") &&
-          !textElement.textContent.includes("BiP Client B") &&
-          !textElement.textContent.includes("Jitsi SDK B") 
-        );
-      });
+      return !logSet.some(log => {
+        const actor = parseLogSequenceNote(log); // Get both actors as an array
+        return textElement.textContent.includes(actor);      
+       });
     });
+  
 
     eventTextElements.forEach((textElement, index) => {
       const x = textElement.getAttribute('x');
@@ -104,7 +100,7 @@ const Dropzone = () => {
       )}
 
       <div className="diagramContainer"></div>
-
+      
       {renderSequenceDiagram()}
     </div>
   );
