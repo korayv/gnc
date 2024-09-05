@@ -1,10 +1,9 @@
 const logSet = [
   {
     logline: "P2PCallManager handleInitiate",
-    //logline: "P2PCallManager\\s+handl[A-Za-z]+/g",
-    sequenceNote: "XMPP -> BiP Client A: handleInitiate(from: {{from}} callId: {{callId}})"
+    sequenceNote: "{{from}} -> BiP Client A: handleInitiate(from: {{from}} callId: {{callId}})"
   },
-  { 
+  {
     logline: "P2PCallEventManager sendInfo",
     sequenceNote: "BiP Client A -> XMPP: event(Conferencejoined)",
   },
@@ -17,15 +16,5 @@ const logSet = [
     sequenceNote: "BiP Client A --> Jitsi SDK A: startRinging",
   },
 ];
-// {
-//   logline: "JitsiActivity",
-//   sequenceNote: "jjj",
-// },
-
-// {
-//   logline: "CallAnalytics",
-//   sequenceNote: "ccc",
-// },
-
 
 export default logSet;

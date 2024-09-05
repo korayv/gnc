@@ -72,21 +72,18 @@ const Dropzone = () => {
       if (x && y && sequenceTimes[index]) {
         const svgNamespace = "http://www.w3.org/2000/svg";
         const timestampText = document.createElementNS(svgNamespace, 'text');
-        timestampText.setAttribute('x', x - 0); // Place the timestamp 50px to the left of the text
-        timestampText.setAttribute('y', y -7); // Align vertically with the corresponding text
-        timestampText.setAttribute('fill', 'red'); // Optional: Make the timestamp text red
-        timestampText.setAttribute('font-size', '10'); // Optional: Set the font size for the timestamp
-        timestampText.textContent = sequenceTimes[index]; // Add the corresponding timestamp
+        timestampText.setAttribute('x', x - 0);
+        timestampText.setAttribute('y', y -7);         timestampText.setAttribute('fill', 'red');  
+        timestampText.setAttribute('font-size', '10'); 
+        timestampText.textContent = sequenceTimes[index]; 
 
-        textElement.parentNode.appendChild(timestampText); // Append the timestamp near the event text
-      }
+        textElement.parentNode.appendChild(timestampText);   }
     });
   };
 
   // Use effect to add timestamps after rendering the diagram
   useEffect(() => {
     if (sequenceText && sequenceTimes.length) {
-      // Wait for the sequence diagram to render before manipulating the SVG
       setTimeout(() => {
         addTimestampsToSvg();
       }, 500); // Adding a small delay to ensure SVG rendering is completed
@@ -106,7 +103,7 @@ const Dropzone = () => {
         </div>
       )}
 
-      <div className="diagramContainer" className={{ marginTop: '20px' }}></div>
+      <div className="diagramContainer"></div>
 
       {renderSequenceDiagram()}
     </div>
