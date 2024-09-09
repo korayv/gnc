@@ -12,7 +12,7 @@ const Dropzone = ({ logSet }) => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const fileContent = e.target.result;
-      const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent, logSet); // Pass logSet here
+      const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent, logSet); // Pass logSet
 
       const sequence = sequenceDiagramArray.map(item => item.message).join('');
       const times = sequenceDiagramArray.map(item => item.time); // Use timestamps parsed from the log file

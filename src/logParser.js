@@ -6,7 +6,7 @@ const rgxPlaceholder = /\{\{(.*?)\}\}/g; //regex that takes the placeholder betw
 ** parseLogAndGenerateSequence is accepting logContent for splitting every line
 ** The lines of logContent will be visited using for each and search the logEntry
 */
-export const parseLogAndGenerateSequence = (logContent) => {
+export const parseLogAndGenerateSequence = (logContent, logSet) => {
   const logLines = logContent.split("\n");
   let sequenceDiagramArray = [];
 
