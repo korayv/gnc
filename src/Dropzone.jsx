@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';  // Import PropTypes
 import { useState, useEffect } from 'react';
 import { parseLogAndGenerateSequence } from './logParser';
 import SequenceDiagram from 'react-sequence-diagram';
 import { addTimestampsToSvg } from './Timestamp';
 
-const Dropzone = () => {
+const Dropzone = ({ logSet }) => {
   const [sequenceText, setSequenceText] = useState('');
   const [sequenceTimes, setSequenceTimes] = useState([]);
 
@@ -11,7 +12,7 @@ const Dropzone = () => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const fileContent = e.target.result;
-      const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent); // Parsing and generating sequence diagram string
+      const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent, logSet); // Pass logSet here
 
       const sequence = sequenceDiagramArray.map(item => item.message).join('');
       const times = sequenceDiagramArray.map(item => item.time); // Use timestamps parsed from the log file
@@ -33,7 +34,6 @@ const Dropzone = () => {
 
       return (
         <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-          {/* Sequence Diagram */}
           <div style={{ flex: 1, padding: '10px' }}>
             <SequenceDiagram
               input={sequenceText}
@@ -46,7 +46,6 @@ const Dropzone = () => {
     }
   };
 
-  // Use effect to add timestamps after rendering the diagram
   useEffect(() => {
     if (sequenceText && sequenceTimes.length) {
       setTimeout(() => {
@@ -73,6 +72,11 @@ const Dropzone = () => {
       {renderSequenceDiagram()}
     </div>
   );
+};
+
+// Add PropTypes validation
+Dropzone.propTypes = {
+  logSet: PropTypes.arrayOf(PropTypes.object).isRequired, // Ensure logSet is an array of objects and is required
 };
 
 export default Dropzone;
