@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './TopBar.css';
 import PropTypes from 'prop-types';
-
 
 const TopBar = ({ onConfigureJSON }) => {
     const [showUploadPopup, setShowUploadPopup] = useState(false);
 
     const handleConfigureClick = () => {
         setShowUploadPopup(true);
+    };
+    const handleEscPressing = (e) => {
+        if (e.key === 'Escape') {
+            setShowUploadPopup(false);
+        }
     };
 
     const handleFileChange = (e) => {
@@ -19,8 +23,8 @@ const TopBar = ({ onConfigureJSON }) => {
                 try {
                     // Parse JSON file
                     const jsonContent = JSON.parse(fileContent);
-                    onConfigureJSON(jsonContent); 
-                    setShowUploadPopup(false); 
+                    onConfigureJSON(jsonContent);
+                    setShowUploadPopup(false);
                 } catch {
                     console.error('Invalid JSON file');
                     alert("Lütfen geçerli bir JSON yükleyin. Kabul edilen format için dökümantasyona bakabilirsiniz.")
@@ -29,6 +33,16 @@ const TopBar = ({ onConfigureJSON }) => {
             reader.readAsText(file);
         }
     };
+    useEffect(() => {
+        if (showUploadPopup) {
+            window.addEventListener('keydown', handleEscPressing);
+        } else {
+            window.removeEventListener('keydown', handleEscPressing);
+        }
+        return () => {
+            window.removeEventListener('keydown', handleEscPressing);
+        };
+    }, [showUploadPopup]);
 
     return (
         <div className="topBar">
@@ -41,9 +55,6 @@ const TopBar = ({ onConfigureJSON }) => {
             <div className="buttonContainer">
                 <button className="button" onClick={handleConfigureClick}>Configure JSON</button>
             </div>
-            {/* Popup for file upload 
-            **TO DO ESC BUTTON WILL EXIT THE MODAL
-            */}
             {showUploadPopup && (
                 <div className="modal">
                     <div className="modal-content">
