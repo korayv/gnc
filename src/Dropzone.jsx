@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { parseLogAndGenerateSequence } from './logParser';
 import SequenceDiagram from 'react-sequence-diagram';
 import { addTimestampsToSvg } from './Timestamp';
+import './Dropzone.css';
 
 const Dropzone = ({ logSet }) => {
   const [sequenceText, setSequenceText] = useState('');
@@ -33,7 +34,7 @@ const Dropzone = ({ logSet }) => {
       }
 
       return (
-        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+        <div className='layout'>
           <div style={{ flex: 1, padding: '10px' }}>
             <SequenceDiagram
               input={sequenceText}
@@ -59,9 +60,10 @@ const Dropzone = ({ logSet }) => {
       <h2>Log Analyzer & Sequence Diagram Generator</h2>
       <p>Lütfen log dosyasını yükleyin.</p>
 
-      <input type="file" onChange={(e) => handleFiles(e.target.files)} />
+      <input className='dropzone-area' type="file" onChange={(e) => handleFiles(e.target.files)} />
       {sequenceText && (
         <div>
+          {/**TODO FILE CONTENT WILL CHANGE WITH THE WHICH LOG FILE USED, UPLOAD OR DEFAULT */}
           <h3>File Content:</h3>
           {/* <pre>{sequenceText}</pre> */}
         </div>

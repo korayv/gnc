@@ -17,7 +17,8 @@ const App = () => {
           <TopBar onConfigureJSON={handleNewLogSet} /> 
         </div>
         <div className="flex space-x-4">
-          <Dropzone logSet={currentLogSet} /> 
+          <Dropzone logSet={currentLogSet} className='p-20 mt-10 border border-dashed border-purple-950' />
+
         </div>
       </div>
     </section>
