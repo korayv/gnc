@@ -57,9 +57,7 @@ const Dropzone = ({ logSet }) => {
 
   return (
     <div>
-      <h2>Log Analyzer & Sequence Diagram Generator</h2>
-      <p>Lütfen log dosyasını yükleyin.</p>
-
+      <h4>Lütfen log dosyasını yükleyin.</h4>
       <input className='dropzone-area' type="file" onChange={(e) => handleFiles(e.target.files)} />
       {sequenceText && (
         <div>

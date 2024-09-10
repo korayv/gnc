@@ -7,7 +7,7 @@ const TopBar = ({ onConfigureJSON }) => {
     const [showUploadPopup, setShowUploadPopup] = useState(false);
 
     const handleConfigureClick = () => {
-        setShowUploadPopup(true); 
+        setShowUploadPopup(true);
     };
 
     const handleFileChange = (e) => {
@@ -21,7 +21,7 @@ const TopBar = ({ onConfigureJSON }) => {
                     onConfigureJSON(jsonContent); // Pass the new JSON log set to App component
                     setShowUploadPopup(false); // Close popup after upload
                 } catch {
-                    console.error('Invalid JSON file'); 
+                    console.error('Invalid JSON file');
                 }
             };
             reader.readAsText(file);
@@ -33,14 +33,15 @@ const TopBar = ({ onConfigureJSON }) => {
             <div className="logoContainer">
                 <img src="./logo.png" alt="Logo" className="logo" />
             </div>
-
             <div className="textContainer">
                 <h3 className="centeredText">BiP Log Visualization Application</h3>
             </div>
             <div className="buttonContainer">
                 <button className="button" onClick={handleConfigureClick}>Configure JSON</button>
             </div>
-            {/* Popup for file upload */}
+            {/* Popup for file upload 
+            **TO DO ESC BUTTON WILL EXIT THE MODAL
+            */}
             {showUploadPopup && (
                 <div className="modal">
                     <div className="modal-content">

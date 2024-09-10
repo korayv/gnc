@@ -5,17 +5,21 @@
 
 .dropzone-area{
     border: 1px dashed #ccc;
-    size: 60px;
+    height: 100px;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    width: 300px;
 }
-.dropzone-area input::file-selector-button {
-    font-weight: 900;
-    color: green;
-    padding: 0.5em;
-    border: thin solid grey;
-    border-radius: 3px;
+input::file-selector-button {
+    font-weight: 400;
+    min-width: 8.75rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    color: #253342;
+    background-color: #ffc900;
+    padding: 0 1.5rem;
+    border-radius: 2.5rem / 100%;
 }
 .file—btn {
     width: 330px;
