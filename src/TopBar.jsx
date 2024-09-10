@@ -17,11 +17,13 @@ const TopBar = ({ onConfigureJSON }) => {
             reader.onload = function (event) {
                 const fileContent = event.target.result;
                 try {
-                    const jsonContent = JSON.parse(fileContent); // Parse JSON file
-                    onConfigureJSON(jsonContent); // Pass the new JSON log set to App component
-                    setShowUploadPopup(false); // Close popup after upload
+                    // Parse JSON file
+                    const jsonContent = JSON.parse(fileContent);
+                    onConfigureJSON(jsonContent); 
+                    setShowUploadPopup(false); 
                 } catch {
                     console.error('Invalid JSON file');
+                    alert("Lütfen geçerli bir JSON yükleyin. Kabul edilen format için dökümantasyona bakabilirsiniz.")
                 }
             };
             reader.readAsText(file);
