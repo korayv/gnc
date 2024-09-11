@@ -40,7 +40,7 @@
   /* Black background with opacity */
 }
 
-.modal-content {
+.modalContent {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -51,7 +51,7 @@
   position: relative;
 }
 
-.modal-close {
+.modalClose {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -61,8 +61,8 @@
   cursor: pointer;
 }
 
-.modal-close:hover,
-.modal-close:focus {
+.modalClose:hover,
+.modalClose:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

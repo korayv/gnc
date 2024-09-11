@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const TopBar = ({ onConfigureJSON }) => {
     const [showUploadPopup, setShowUploadPopup] = useState(false);
+    const [isUpload, setIsUpload] = useState(false);
 
     const handleConfigureClick = () => {
         setShowUploadPopup(true);
@@ -20,6 +21,8 @@ const TopBar = ({ onConfigureJSON }) => {
             const reader = new FileReader();
             reader.onload = function (event) {
                 const fileContent = event.target.result;
+                setIsUpload(true);  
+
                 try {
                     // Parse JSON file
                     const jsonContent = JSON.parse(fileContent);
@@ -57,14 +60,15 @@ const TopBar = ({ onConfigureJSON }) => {
             </div>
             {showUploadPopup && (
                 <div className="modal">
-                    <div className="modal-content">
-                        <span className="modal-close" onClick={() => setShowUploadPopup(false)}>&times;</span>
+                    <div className="modalContent">
+                        <span className="modalClose" onClick={() => setShowUploadPopup(false)}>&times;</span>
                         <h3>Upload a new JSON log file</h3>
                         <input type="file" accept="application/json" onChange={handleFileChange} />
                         <button className="button" onClick={() => setShowUploadPopup(false)}>Close</button>
                     </div>
                 </div>
             )}
+            <div className="status"><p>{isUpload ? "Uploaded log file" : "Default log file"}</p></div>
         </div>
     );
 };

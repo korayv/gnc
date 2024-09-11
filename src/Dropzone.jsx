@@ -8,22 +8,21 @@ import './Dropzone.css';
 const Dropzone = ({ logSet }) => {
   const [sequenceText, setSequenceText] = useState('');
   const [sequenceTimes, setSequenceTimes] = useState([]);
-  const [isUpload, setIsUpload] = useState(false);
 
   const handleFiles = (files) => {
     const reader = new FileReader();
     reader.onload = function (e) {
-      const fileContent = e.target.result;
+      const fileContent = e.target.result;     
       try {
         // Parse JSON content and generate sequence diagram
         const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent, logSet);
-        setIsUpload(true);  // Set to true only if file is uploaded successfully
 
         const sequence = sequenceDiagramArray.map(item => item.message).join('');
         const times = sequenceDiagramArray.map(item => item.time); // Use timestamps parsed from the log file
         setSequenceText(sequence);
         setSequenceTimes(times);
       } catch (error) {
+        //error handling
         console.error('Error parsing the log file:', error);
         alert("Geçersiz log dosyası. Lütfen JSON formatında bir dosya yükleyin.");
       }
@@ -69,7 +68,7 @@ const Dropzone = ({ logSet }) => {
       <input className='dropzone-area' type="file" onChange={(e) => handleFiles(e.target.files)} />
       {sequenceText && (
         <div>
-          <h3>File Content: {isUpload ? "Uploaded file" : "Default file"}</h3>
+          <h3>:::Visual Output:::</h3>
         </div>
       )}
 
