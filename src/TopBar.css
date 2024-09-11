@@ -1,19 +1,19 @@
 .topBar {
   display: flex;
-  justify-content: space-between;
+  min-width: 101rem;
   align-items: center;
   width: 100%;
   height: 60px;
-  padding: 0 16px;
+  padding: 0 12px;
   background-color: gold;
 }
 
 .logoContainer {
-  flex: 1;
+  flex: 2;
 }
 
 .textContainer {
-  flex: 2;
+  flex: 6;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -24,7 +24,9 @@
   right: 30px;
   border-radius: 30px;
 }
-
+.status{
+  flex: 1;
+}
 /* Modal styling */
 .modal {
   display: block;
