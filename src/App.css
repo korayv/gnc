@@ -1,8 +1,15 @@
-#root {
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+.header{
+    height: 100px;
+    align-items: center;
+    width: 100%;
 }
-.section{
-  margin-top: 0;
+.content{
+    align-items: center;
+    text-align: center;
 }

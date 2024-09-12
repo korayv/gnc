@@ -2,25 +2,27 @@ import { useState } from 'react';
 import Dropzone from './Dropzone';
 import TopBar from './TopBar';
 import logSet from './log_set'; // Import the default logSet
-
+import './App.css'
 const App = () => {
-  const [currentLogSet, setCurrentLogSet] = useState(logSet); 
+  const [currentLogSet, setCurrentLogSet] = useState(logSet);
 
   const handleNewLogSet = (newLogSet) => {
-    setCurrentLogSet(newLogSet); 
+    setCurrentLogSet(newLogSet);
   };
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="flex space-x-4">
-          <TopBar onConfigureJSON={handleNewLogSet} /> 
+    <div className="container">
+      <section className='header'>
+        <div className='topbar'>
+          <TopBar onConfigureJSON={handleNewLogSet} />
         </div>
-        <div className="flex space-x-4">
-          <Dropzone logSet={currentLogSet}/>
+      </section>
+      <section className='content'>
+        <div className='dropzone'>
+          <Dropzone logSet={currentLogSet} />
         </div>
+      </section>
       </div>
-    </section>
   );
 }
 

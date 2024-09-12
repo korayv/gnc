@@ -2,7 +2,6 @@ import { parseLogSequenceNote } from './logParser';
 import logSet from './log_set';
 /**
  * Function to add timestamps near the text elements in the SVG
- * @param {Array} sequenceTimes - Array of timestamps to be added to the SVG elements
  */
 export const addTimestampsToSvg = (sequenceTimes) => {
   const svgTexts = document.querySelectorAll('svg text'); // Select all text elements inside the SVG

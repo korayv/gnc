@@ -38,6 +38,7 @@ export default DropzoneArea;
 const dropzoneStyle = {
   border: '2px dashed #cccccc',
   borderRadius: '10px',
+  margin: '0 30px',
   padding: '20px',
   backgroundColor: 'aliceBlue',
   textAlign: 'center',

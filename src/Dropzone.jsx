@@ -31,7 +31,7 @@ const Dropzone = ({ logSet }) => {
         setTimeout(() => {
           setLogFileProcess(''); // Clear the processing message after processing
           setIsProcessed(true); // Mark as processed
-        }, 2000);
+        }, 200);
 
       } catch (error) {
         console.error('Error parsing the log file:', error);

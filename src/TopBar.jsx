@@ -65,7 +65,7 @@ const TopBar = ({ onConfigureJSON }) => {
                         <span className="modalClose" onClick={() => setShowUploadPopup(false)}>&times;</span>
                         <h3>Upload a new JSON log file</h3>
                         <DropzoneArea onFilesDrop={handleFile} />
-                        <button className="button" onClick={() => setShowUploadPopup(false)}>Close</button>
+                        <button className="button close-btn" onClick={() => setShowUploadPopup(false)}>Close</button>
                     </div>
                 </div>
             )}
