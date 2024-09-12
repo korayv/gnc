@@ -18,7 +18,12 @@ const Dropzone = ({ logSet }) => {
       const fileContent = e.target.result;
       try {
         setIsProcessed(false);
-        setLogFileProcess('Dosya işleniyor...');
+        setLogFileProcess(
+        <div className="loader-container">
+          <span className="loader"></span>
+        </div>
+        );
+        
 
         // Parse JSON content and generate sequence diagram
         const sequenceDiagramArray = parseLogAndGenerateSequence(fileContent, logSet);

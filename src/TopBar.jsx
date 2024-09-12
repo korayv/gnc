@@ -7,6 +7,7 @@ const TopBar = ({ onConfigureJSON }) => {
     const [showUploadPopup, setShowUploadPopup] = useState(false);
     const [isUpload, setIsUpload] = useState(false);
 
+
     const handleConfigureClick = () => {
         setShowUploadPopup(true);
     };

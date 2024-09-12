@@ -8,6 +8,7 @@
 }
 
 .logoContainer {
+  margin-left: 30px;
   flex: 2;
 }
 
@@ -35,12 +36,14 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: #0000000f;
+  background-color: #0000004f;
     
 }
 
 .modalContent {
   background-color: #fefefe;
+  justify-content: center;
+  text-align: center;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -78,5 +81,4 @@ input[type="file"] {
 }
 .close-btn{
   margin-top: 20px;
-
 }
