@@ -18,7 +18,6 @@ const App = () => {
         </div>
         <div className="flex space-x-4">
           <Dropzone logSet={currentLogSet}/>
-
         </div>
       </div>
     </section>
