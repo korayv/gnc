@@ -15,24 +15,22 @@
 }
 
 .loader {
-
     height: 32px;
     width: 200px;
-    background: #fff;
     border: 2px solid #fff;
-    color: red;
+    color: gold;
     overflow: hidden;
 }
 
 .loader::before {
     content: '';
-    background: red;
+    background: gold;
     position: absolute;
     left: 0;
     top: 0;
     width: 0;
     height: 100%;
-    animation: loading 10s linear infinite;
+    animation: loading 0.4s linear infinite;
 }
 
 .loader:after {
@@ -47,7 +45,7 @@
     line-height: 32px;
     color: rgb(0, 255, 255);
     mix-blend-mode: difference;
-    animation: percentage 10s linear infinite;
+    animation: percentage 0.1s linear infinite;
 }
 
 @keyframes loading {
