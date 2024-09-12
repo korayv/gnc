@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './TopBar.css';
 import PropTypes from 'prop-types';
+import DropzoneArea from './DropzoneArea';
 
 const TopBar = ({ onConfigureJSON }) => {
     const [showUploadPopup, setShowUploadPopup] = useState(false);
@@ -14,9 +15,8 @@ const TopBar = ({ onConfigureJSON }) => {
             setShowUploadPopup(false);
         }
     };
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
+    const handleFile = (files) => {
+        const file = files[0]
         if (file && onConfigureJSON) {
             const reader = new FileReader();
             reader.onload = function (event) {
@@ -48,6 +48,7 @@ const TopBar = ({ onConfigureJSON }) => {
     }, [showUploadPopup]);
 
     return (
+     
         <div className="topBar">
             <div className="logoContainer">
                 <img src="./logo.png" alt="Logo" className="logo" />
@@ -63,7 +64,7 @@ const TopBar = ({ onConfigureJSON }) => {
                     <div className="modalContent">
                         <span className="modalClose" onClick={() => setShowUploadPopup(false)}>&times;</span>
                         <h3>Upload a new JSON log file</h3>
-                        <input type="file" accept="application/json" onChange={handleFileChange} />
+                        <DropzoneArea onFilesDrop={handleFile} />
                         <button className="button" onClick={() => setShowUploadPopup(false)}>Close</button>
                     </div>
                 </div>
