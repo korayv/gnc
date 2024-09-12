@@ -10,13 +10,12 @@
 
 .loader-container {
     margin-top: 40px;
-    display: block;
     position: relative;
 }
 
 .loader {
     height: 32px;
-    width: 200px;
+    width: 100%;
     border: 2px solid #fff;
     color: gold;
     overflow: hidden;
@@ -30,7 +29,7 @@
     top: 0;
     width: 0;
     height: 100%;
-    animation: loading 0.4s linear infinite;
+    animation: loading 0.2s linear infinite;
 }
 
 .loader:after {
