@@ -20,7 +20,7 @@ const DropzoneArea = ({ onFilesDrop }) => {
     >
       <input {...getInputProps()} className="dropzone-input" />
       <div className="icon-container">
-        <FontAwesomeIcon icon={faUpload} size="4x" />
+        <FontAwesomeIcon color= {'var(--primary-turkcell-light-blue)'} icon={faUpload} size="4x" />
         <p>
           {isDragActive ? 'Dosyayı bırakın...' : 'Dosyayı sürükleyin veya yüklemek için tıklayın'}
         </p>
@@ -40,7 +40,7 @@ const dropzoneStyle = {
   borderRadius: '10px',
   margin: '0 30px',
   padding: '20px',
-  backgroundColor: 'aliceBlue',
+  backgroundColor: '#var(--secondary-turkcell-light-blue)',
   textAlign: 'center',
   cursor: 'pointer',
 };

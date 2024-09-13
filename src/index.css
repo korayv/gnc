@@ -9,8 +9,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-turkcell-yellow: #ffc72c;
+  --primary-turkcell-blue: #0047bb;
+  --primary-turkcell-light-blue: #00a9e0;
+  --primary-turkcell-gradient: linear-gradient(45deg, #FFC82D, #0048BB);
+  --secondary-turkcell-blue: #003087;
+  --secondary-turkcell-yellow: #f2a900;
+  --secondary-turkcell-light-blue: #a5d3f0;
 }
-body{
+
+body {
   margin: 0;
 }
 

@@ -17,13 +17,13 @@
     height: 32px;
     width: 100%;
     border: 2px solid #fff;
-    color: gold;
+    color: var(--primary-turkcell-yellow);
     overflow: hidden;
 }
 
 .loader::before {
     content: '';
-    background: gold;
+    color: var(--primary-turkcell-yellow);
     position: absolute;
     left: 0;
     top: 0;
@@ -42,7 +42,7 @@
     text-align: center;
     font-size: 24px;
     line-height: 32px;
-    color: rgb(0, 255, 255);
+    color: var(--primary-turkcell-light-blue);
     mix-blend-mode: difference;
     animation: percentage 0.1s linear infinite;
 }
