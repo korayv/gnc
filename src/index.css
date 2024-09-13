@@ -15,7 +15,7 @@
   --primary-turkcell-gradient: linear-gradient(45deg, #FFC82D, #0048BB);
   --secondary-turkcell-blue: #003087;
   --secondary-turkcell-yellow: #f2a900;
-  --secondary-turkcell-light-blue: #a5d3f0;
+  --secondary-turkcell-light-blue: #e2f0fa;
 }
 
 body {
@@ -40,7 +40,10 @@ button {
 }
 
 button:hover {
-  background-color: #0055a5;
+  background-color: var(--primary-turkcell-yellow);
+  color: black;
+  border: 1px solid black;
+  transition: width 4s, height 4s;
 }
 
 button:focus,

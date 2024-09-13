@@ -40,7 +40,7 @@ const dropzoneStyle = {
   borderRadius: '10px',
   margin: '0 30px',
   padding: '20px',
-  backgroundColor: '#var(--secondary-turkcell-light-blue)',
+  backgroundColor: 'var(--secondary-turkcell-light-blue)',
   textAlign: 'center',
   cursor: 'pointer',
 };
