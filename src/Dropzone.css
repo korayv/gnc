@@ -11,6 +11,7 @@
 .loader-container {
     margin-top: 40px;
     position: relative;
+    display: flex;
 }
 
 .loader-container {
