@@ -13,17 +13,22 @@
     position: relative;
 }
 
+.loader-container {
+    margin-top: 40px;
+    position: relative;
+}
+
 .loader {
     height: 32px;
     width: 100%;
     border: 2px solid #fff;
-    color: var(--primary-turkcell-yellow);
+    color: gold;
     overflow: hidden;
 }
 
 .loader::before {
     content: '';
-    color: var(--primary-turkcell-yellow);
+    background: gold;
     position: absolute;
     left: 0;
     top: 0;
@@ -42,7 +47,7 @@
     text-align: center;
     font-size: 24px;
     line-height: 32px;
-    color: var(--primary-turkcell-light-blue);
+    color: rgb(0, 255, 255);
     mix-blend-mode: difference;
     animation: percentage 0.1s linear infinite;
 }
