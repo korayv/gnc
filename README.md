@@ -59,7 +59,7 @@ npm run dev
 ### Configuring JSON file
 
 This application is handling by default VoIP calls in BiP application.
-If you want to configure the JSON file, you can read the documentation here. [JSON File Preparing](how-to-log-json.md)
+If you want to configure the JSON file, you can read the documentation here: [JSON File Preparing](how-to-log-json.md)
 
 1. Click Configure JSON button from the topbar which is at the top right.
 2. From the pop-up, drag and drop the JSON you prepared.
@@ -79,5 +79,7 @@ If you want to configure the JSON file, you can read the documentation here. [JS
 ## 6. Visual Representation of Logs
 
 - **Sequence Diagram**: From the log files filtered lines are trackable. So that, using a specific json line tracking system we can now handle what is the call flow now on. We can see the application errors from the visualized call flow.
-- **Actor Lines**: This is the diagonal lines that represents the lifelines in sequence diagrams.
-- **Sequence Notes**: Sequence Notes are the
+- **Actor Lines**: This is the vertical lines that represents the lifelines in sequence diagrams.
+- **Connector Lines**: This is the lines that connect the actor lines with methods.
+- **Note-overs**: You can have boxes over the actor lines. Using note-overs is useful for seeing important events on lifelines. 
+- **Timestamp**: Red text over the methods represent time data. 
