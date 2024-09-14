@@ -59,7 +59,7 @@ export const parseLogSequenceNote = (sequenceNote) => {
 };
 
 const extractDataFromLogLine = (line) => {
-  const rgxDynamicKey = /(\w+)\s?:\s?([^\s,]+)/g; //regex key for with the dynamic approach after the curly
+  const rgxDynamicKey = /(\w+)\s?[=:]\s?([^\s,]+)/g;  //regex key search `=` `:` after the curly
   const keyValuePairs = {}; //Object that stores key value pairs  
   let match;
 
