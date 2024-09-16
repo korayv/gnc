@@ -11,13 +11,13 @@ export const parseLogAndGenerateSequence = (logContent, logSet) => {
   logLines.forEach((logLine) => {
     logSet.forEach((logEntry) => {
       if (logLine.includes(logEntry.logline)) {
-        const logData = extractDataFromLogLine(logLine);
 
         // Sequence note checked if contained {{curly}} and replaced if any matched item
         let updatedSequenceNote = logEntry.sequenceNote.match('{') ?
           logEntry.sequenceNote
             .replace(rgxPlaceholder, (match, key) => {
-              return logData[key] ? logData[key] : `No Result for ${key}`;
+              const result = extractDataFromLogLine(logLine, key);
+              return result || `No Result for ${key}`;
             }) : logEntry.sequenceNote;
 
         const dateTime = dateTimeRegex.exec(logLine);
@@ -58,16 +58,10 @@ export const parseLogSequenceNote = (sequenceNote) => {
   return [actor1, actor2]; // Return the array of actors
 };
 
-const extractDataFromLogLine = (line) => {
-  const rgxDynamicKey = /(\w+)\s?[=:]\s?([^\s,]+)/g;  //regex key search `=` `:` after the curly
-  const keyValuePairs = {}; //Object that stores key value pairs  
-  let match;
-
-  //Iterate until a match on the the dynamic key regex in the log line 
-  while ((match = rgxDynamicKey.exec(line)) !== null) {
-    //Assign the captured match[2] to assign the capturedValue match[2] in the keyValuePairs
-    keyValuePairs[match[1]] = match[2];
-  };
-
-  return keyValuePairs;
+const extractDataFromLogLine = (line, key) => {
+  const regex = new RegExp(`${key}\\s?[=:]\\s?([^\\s,}]+)`);
+  const match = regex.exec(line);
+  
+  // Return the captured value if there's a match
+  return match ? match[1] : null;
 };
